@@ -14,15 +14,10 @@ class PetTest {
     private final String TEST_LOC = "California";
     private final String TEST_TYPE = "Dog";
 
-
     @BeforeEach
     void setUp() {
         testPet = new Pet(TEST_NAME, TEST_AGE, TEST_LOC, TEST_TYPE);
     }
-//
-//    @AfterEach
-//    void tearDown() {
-//    }
 
     // Constructor Tests
     @Test
@@ -53,13 +48,13 @@ class PetTest {
         // try to use the Getter and assign to a variable
         try {
             retrievedName = testPet.getName();
-        } catch (Error e){
+        } catch (Error e) {
             // error assigning result to string
             System.out.println("Error assigning getName() result to string: " + e);
             fail();
         }
         // Assert that pet name contains any characters
-        assertTrue(retrievedName.length()>0);
+        assertTrue(retrievedName.length() > 0);
         // Assert that retrieved name matches test data
         assertEquals(TEST_NAME, retrievedName);
     }
@@ -70,7 +65,7 @@ class PetTest {
 
         try {
             retrievedAge = testPet.getAge();
-        } catch (Error e){
+        } catch (Error e) {
             System.out.println("Error assigning getAge() result to int: " + e);
             fail();
         }
@@ -85,13 +80,13 @@ class PetTest {
         // try to use the Getter and assign to a variable
         try {
             retrievedType = testPet.getType();
-        } catch (Error e){
+        } catch (Error e) {
             // error assigning result to string
             System.out.println("Error assigning getType() result to string: " + e);
             fail();
         }
         // Assert that pet name contains any characters
-        assertTrue(retrievedType.length()>0);
+        assertTrue(retrievedType.length() > 0);
         // Assert that retrieved name matches test data
         assertEquals(TEST_TYPE, retrievedType);
     }
