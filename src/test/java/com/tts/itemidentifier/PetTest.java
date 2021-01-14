@@ -25,8 +25,7 @@ class PetTest {
         try {
             new Pet();
         } catch (Error e) {
-            System.out.println("Error creating instance of Pet class with empty constructor.");
-            System.out.println(e);
+            System.out.println("Error creating instance of Pet class with empty constructor: " + e);
             fail();
         }
     }
@@ -34,7 +33,7 @@ class PetTest {
     @Test
     void constructorFull() {
         try {
-//            new Pet("name", 1, "location", "type");
+            new Pet("name", 1, "location", "type");
         } catch (Error e) {
             System.out.println("Error creating instance of Pet class with empty constructor: " + e);
             fail();
@@ -69,9 +68,7 @@ class PetTest {
             System.out.println("Error assigning getAge() result to int: " + e);
             fail();
         }
-
         assertEquals(TEST_AGE, retrievedAge);
-
     }
 
     @Test
@@ -120,6 +117,20 @@ class PetTest {
         String currentLocation = testPet.getLocation();
         assertNotEquals(TEST_LOC, currentLocation);
         assertEquals(setLocationTest, currentLocation);
+    }
+
+    @Test
+    void setType() {
+        String setTypeTest = "ThisTypeIsOnlyATest";
+        try {
+            testPet.setType(setTypeTest);
+        } catch (Error e) {
+            System.out.println("Error setting pet type: " + e);
+            fail();
+        }
+        String currentType = testPet.getType();
+        assertNotEquals(TEST_TYPE, currentType);
+        assertEquals(setTypeTest, currentType);
     }
 
 
