@@ -10,15 +10,12 @@ class DeckTest {
 
     Deck simulatedDeck;
     private static final int TEST_ARG1 = 0, TEST_ARG2 = 0, TEST_ARG3 = 0, TEST_ARG4 = 0;
+    private static final int NEW_TEST_ARG1 = 0, NEW_TEST_ARG2 = 2, NEW_TEST_ARG3 = 3, NEW_TEST_ARG4 = 4;
 
     @BeforeEach
     void setUp() {
         simulatedDeck = new Deck(TEST_ARG1, TEST_ARG2, TEST_ARG3, TEST_ARG4);
     }
-//
-//    @AfterEach
-//    void tearDown() {
-//    }
 
     // Constructor Tests
     @Test
@@ -38,7 +35,7 @@ class DeckTest {
         int arg1 = 1;
         int arg2 = 2;
         try {
-//            new Deck(arg1, arg2);
+            new Deck(arg1, arg2);
         } catch (Error e) {
             System.out.println("Error in 2arg constructor: " + e);
             fail();
@@ -84,29 +81,58 @@ class DeckTest {
     // Setter Tests
     @Test
     void setVariableOne() {
-        fail();
+        try{
+            simulatedDeck.setVariableOne(NEW_TEST_ARG1);
+        } catch (Error e) {
+            System.out.println("Error setting Variable One: "+ e);
+        }
+        assertEquals(NEW_TEST_ARG1, simulatedDeck.getVariableOne());
     }
 
     @Test
     void setVariableTwo() {
-        fail();
+        try{
+            simulatedDeck.setVariableTwo(NEW_TEST_ARG2);
+        } catch (Error e) {
+            System.out.println("Error setting Variable Two: "+ e);
+        }
+        assertEquals(NEW_TEST_ARG2, simulatedDeck.getVariableTwo());
     }
 
     @Test
     void setVariableThree() {
-        fail();
+        try{
+            simulatedDeck.setVariableThree(NEW_TEST_ARG3);
+        } catch (Error e) {
+            System.out.println("Error setting Variable Three: "+ e);
+        }
+        assertEquals(NEW_TEST_ARG3, simulatedDeck.getVariableThree());
     }
 
     // Boolean Return Test
     @Test
     void returnBool() {
-        fail();
+        Boolean retrievedBool = false;
+        try {
+            retrievedBool = simulatedDeck.getBool();
+        } catch (Error e){
+            System.out.println("Error assigning Bool: " + e);
+            fail();
+        }
+        assertNotEquals(null,retrievedBool);
     }
 
     // String Return Test
     @Test
     void returnString() {
-        fail();
+        String retrievedString = "";
+        try {
+            retrievedString = simulatedDeck.getString();
+        } catch (Error e){
+            System.out.println("Error assigning String: " + e);
+            fail();
+        }
+        assertNotEquals(null,retrievedString);
     }
 
 }
