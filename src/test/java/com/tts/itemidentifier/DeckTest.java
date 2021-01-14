@@ -9,12 +9,12 @@ import static org.junit.jupiter.api.Assertions.*;
 class DeckTest {
 
     Deck simulatedDeck;
-    private static final int TEST_ARG1 = 0, TEST_ARG2 = 0, TEST_ARG3 = 0, TEST_ARG4 = 0;
-    private static final int NEW_TEST_ARG1 = 0, NEW_TEST_ARG2 = 2, NEW_TEST_ARG3 = 3, NEW_TEST_ARG4 = 4;
+    private static final int TEST_ARG1 = 0, TEST_ARG2 = 0, TEST_ARG3 = 0;
+    private static final int NEW_TEST_ARG1 = 0, NEW_TEST_ARG2 = 2, NEW_TEST_ARG3 = 3;
 
     @BeforeEach
     void setUp() {
-        simulatedDeck = new Deck(TEST_ARG1, TEST_ARG2, TEST_ARG3, TEST_ARG4);
+        simulatedDeck = new Deck(TEST_ARG1, TEST_ARG2, TEST_ARG3);
     }
 
     // Constructor Tests
@@ -49,13 +49,12 @@ class DeckTest {
         int arg1 = 1;
         int arg2 = 2;
         int arg3 = 3;
-        int arg4 = 4;
         try {
-            new Deck(arg1, arg2, arg3, arg4);
+            new Deck(arg1, arg2, arg3);
         } catch (Error e) {
             System.out.println("Error in full arg constructor: " + e);
         }
-        Deck testDeck = new Deck(arg1, arg2, arg3, arg4);
+        Deck testDeck = new Deck(arg1, arg2, arg3);
         assertNotEquals(null, testDeck);
     }
 
@@ -134,5 +133,4 @@ class DeckTest {
         }
         assertNotEquals(null,retrievedString);
     }
-
 }
