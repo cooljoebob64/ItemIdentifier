@@ -77,7 +77,7 @@ public class Deck {
                 "Name: " + this.name +
                         "\nColors: " + this.getColors() +
                         "\nSize: " + this.size +
-                        "\nLegal Size: " + this.getLegalSize()
+                        "\nLegal: " + this.getLegalSize()
         ;
     }
 
