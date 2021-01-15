@@ -2,61 +2,83 @@ package com.tts.itemidentifier;
 
 public class Deck {
 
-    private int var1;
-    private int var2;
-    private int var3;
-    private boolean myBool;
-    private String myString;
+    private String name;
+    private String colors;
+    private int size;
+    private boolean legalSize;
+    private String fullDescription;
 
-    private final static int DEFAULT_VAR1 = 1;
-    private final static int DEFAULT_VAR2 = 2;
-    private final static int DEFAULT_VAR3 = 3;
+    private final static String DEFAULT_DECK_NAME = "New Deck";
+    private final static String DEFAULT_DECK_COLORS = "C";
+    private final static int DEFAULT_DECK_SIZE = 0;
+    private final static int MIN_DECK_SIZE = 60;
 
-    public Deck(){
-        this(DEFAULT_VAR1, DEFAULT_VAR2, DEFAULT_VAR3);
+    public Deck() {
+        this(DEFAULT_DECK_NAME, DEFAULT_DECK_COLORS, DEFAULT_DECK_SIZE);
     }
 
-    public Deck(int arg1, int arg2){
-        this(arg1,arg2, DEFAULT_VAR3);
+    public Deck(String name, String colors) {
+        this(name, colors, DEFAULT_DECK_SIZE);
     }
 
-    public Deck(int arg1, int arg2, int arg3){
-        this.var1 = arg1;
-        this.var2 = arg2;
-        this.var3 = arg3;
+    public Deck(String name, String colors, int size) {
+        this.name = name;
+        this.colors = colors;
+        this.size = size;
 
-        this.myBool = true;
-        this.myString = "This is a String!";
-    }
-
-
-    public int getVariableOne(){
-        return this.var1;
+        this.legalSize = (this.size >= MIN_DECK_SIZE);
+        this.buildDescription();
     }
 
-    public int getVariableTwo(){
-        return this.var2;
+
+    public String getName() {
+        return this.name;
     }
 
-    public int getVariableThree(){
-        return this.var3;
+    public String getColors() {
+        StringBuilder colorOutput = new StringBuilder();
+
+        for (int i = 0; i < this.colors.length(); i++) {
+            if (!colorOutput.toString().contains("" + this.colors.charAt(i))) {
+                colorOutput.append(this.colors.charAt(i));
+            }
+        }
+
+        return colorOutput.toString().toUpperCase();
     }
 
-    public void setVariableOne(int newVar){
-        this.var1 = newVar;
-    }
-    public void setVariableTwo(int newVar){
-        this.var2 = newVar;
-    }
-    public void setVariableThree(int newVar){
-        this.var3 = newVar;
+    public int getSize() {
+        return this.size;
     }
 
-    public boolean getBool(){
-        return myBool;
+    public void setName(String newVar) {
+        this.name = newVar;
     }
-    public String getString(){
-        return myString;
+
+    public void setColors(String newVar) {
+        this.colors = newVar;
+    }
+
+    public void setSize(int newSize) {
+        this.size = newSize;
+        this.legalSize = (this.size >= MIN_DECK_SIZE);
+    }
+
+    public boolean getLegalSize() {
+        return legalSize;
+    }
+
+    public String getFullDescription() {
+        return fullDescription;
+    }
+
+    private void buildDescription() {
+        this.fullDescription =
+                "Name: " + this.name +
+                        "\nColors: " + this.getColors() +
+                        "\nSize: " + this.size +
+                        "\nLegal Size: " + this.getLegalSize()
+        ;
     }
 
 }

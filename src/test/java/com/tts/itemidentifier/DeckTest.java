@@ -1,6 +1,5 @@
 package com.tts.itemidentifier;
 
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -9,12 +8,16 @@ import static org.junit.jupiter.api.Assertions.*;
 class DeckTest {
 
     Deck simulatedDeck;
-    private static final int TEST_ARG1 = 0, TEST_ARG2 = 0, TEST_ARG3 = 0;
-    private static final int NEW_TEST_ARG1 = 0, NEW_TEST_ARG2 = 2, NEW_TEST_ARG3 = 3;
+    private static final String TEST_DECK_NAME = "TEST DECK";
+    private static final String TEST_ARG2 = "R";
+    private static final int TEST_DECK_SIZE = 60;
+    private static final String NEW_TEST_DECK_NAME = "UPDATED DECK";
+    private static final String NEW_TEST_ARG2 = "G";
+    private static final int NEW_TEST_DECK_SIZE = 100;
 
     @BeforeEach
     void setUp() {
-        simulatedDeck = new Deck(TEST_ARG1, TEST_ARG2, TEST_ARG3);
+        simulatedDeck = new Deck(TEST_DECK_NAME, TEST_ARG2, TEST_DECK_SIZE);
     }
 
     // Constructor Tests
@@ -32,8 +35,8 @@ class DeckTest {
 
     @Test
     void constructorTwoArg() {
-        int arg1 = 1;
-        int arg2 = 2;
+        String arg1 = "Two Arg Constructor Deck";
+        String arg2 = "BWU";
         try {
             new Deck(arg1, arg2);
         } catch (Error e) {
@@ -46,9 +49,9 @@ class DeckTest {
 
     @Test
     void constructorFull() {
-        int arg1 = 1;
-        int arg2 = 2;
-        int arg3 = 3;
+        String arg1 = "Full Constructor Deck";
+        String arg2 = "WUG";
+        int arg3 = 60;
         try {
             new Deck(arg1, arg2, arg3);
         } catch (Error e) {
@@ -60,60 +63,60 @@ class DeckTest {
 
     // Getter Tests
     @Test
-    void getVariableOne() {
-        int testVariable = simulatedDeck.getVariableOne();
-        assertEquals(TEST_ARG1, testVariable);
+    void getName() {
+        String testVariable = simulatedDeck.getName();
+        assertEquals(TEST_DECK_NAME, testVariable);
     }
 
     @Test
-    void getVariableTwo() {
-        int testVariable = simulatedDeck.getVariableTwo();
+    void getColors() {
+        String testVariable = simulatedDeck.getColors();
         assertEquals(TEST_ARG2, testVariable);
     }
 
     @Test
-    void getVariableThree() {
-        int testVariable = simulatedDeck.getVariableThree();
-        assertEquals(TEST_ARG3, testVariable);
+    void getSize() {
+        int testVariable = simulatedDeck.getSize();
+        assertEquals(TEST_DECK_SIZE, testVariable);
     }
 
     // Setter Tests
     @Test
-    void setVariableOne() {
+    void setName() {
         try{
-            simulatedDeck.setVariableOne(NEW_TEST_ARG1);
+            simulatedDeck.setName(NEW_TEST_DECK_NAME);
         } catch (Error e) {
             System.out.println("Error setting Variable One: "+ e);
         }
-        assertEquals(NEW_TEST_ARG1, simulatedDeck.getVariableOne());
+        assertEquals(NEW_TEST_DECK_NAME, simulatedDeck.getName());
     }
 
     @Test
-    void setVariableTwo() {
+    void setColors() {
         try{
-            simulatedDeck.setVariableTwo(NEW_TEST_ARG2);
+            simulatedDeck.setColors(NEW_TEST_ARG2);
         } catch (Error e) {
             System.out.println("Error setting Variable Two: "+ e);
         }
-        assertEquals(NEW_TEST_ARG2, simulatedDeck.getVariableTwo());
+        assertEquals(NEW_TEST_ARG2, simulatedDeck.getColors());
     }
 
     @Test
-    void setVariableThree() {
+    void setSize() {
         try{
-            simulatedDeck.setVariableThree(NEW_TEST_ARG3);
+            simulatedDeck.setSize(NEW_TEST_DECK_SIZE);
         } catch (Error e) {
             System.out.println("Error setting Variable Three: "+ e);
         }
-        assertEquals(NEW_TEST_ARG3, simulatedDeck.getVariableThree());
+        assertEquals(NEW_TEST_DECK_SIZE, simulatedDeck.getSize());
     }
 
     // Boolean Return Test
     @Test
-    void returnBool() {
-        Boolean retrievedBool = false;
+    void getLegalSize() {
+        boolean retrievedBool = false;
         try {
-            retrievedBool = simulatedDeck.getBool();
+            retrievedBool = simulatedDeck.getLegalSize();
         } catch (Error e){
             System.out.println("Error assigning Bool: " + e);
             fail();
@@ -126,7 +129,7 @@ class DeckTest {
     void returnString() {
         String retrievedString = "";
         try {
-            retrievedString = simulatedDeck.getString();
+            retrievedString = simulatedDeck.getFullDescription();
         } catch (Error e){
             System.out.println("Error assigning String: " + e);
             fail();
